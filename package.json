@@ -1,0 +1,73 @@
+{
+  "name": "dom-create-element-query-selector",
+  "version": "0.0.0",
+  "description": "A utility function to create DOM elements with CSS selector-like syntax",
+  "main": "cjs/index.js",
+  "browser": "dist/domCreateElementQuerySelector.js",
+  "module": "es/index.js",
+  "jsxnext:main": "es/index.js",
+  "files": [
+    "dist",
+    "cjs",
+    "es",
+    "src"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+
+    "prepublish": "npm run build",
+    "precommit": "npm run lint:test",
+    "prepush": "npm run lint:test",
+
+    "release": "release-it",
+
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint src/*.js",
+    
+
+    "test": "clear && jest",
+    "test:coverage": "jest --coverage ",
+    "test:watch": "clear && jest --watch",
+
+    "lint:test": "npm run lint && npm run test:coverage",
+
+    "build": "clear && npm run lint:test && npm run build:cjs && npm run build:es && npm run build:umd",
+    "build:watch": "clear && rimraf cjs && cross-env BABEL_ENV=cjs babel -w src --out-dir cjs",
+
+    "build:es": "rimraf es && cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:cjs": "rimraf cjs && cross-env BABEL_ENV=cjs babel src --out-dir cjs",
+    "build:umd": "rimraf dist && cross-env BABEL_ENV=es rollup -c & cross-env BABEL_ENV=es NODE_ENV=production rollup -c"
+
+  },
+  "keywords": [],
+  "author": "Laurent Blanes (laurent.blanes@gmail.com)",
+  "license": "MIT",
+  "repository": "hekigan/dom-create-element-query-selector",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.17.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    
+    "babel-preset-es2015": "^6.16.0",
+    "coveralls": "^2.11.15",
+    "cross-env": "^3.1.3",
+    "eslint": "^3.12.0",
+    "eslint-config-devine": "^1.6.1",
+    "eslint-plugin-babel": "^4.0.0",
+    
+    "jest": "^18.1.0",
+    "rimraf": "^2.5.4",
+    "release-it": "^2.5.1",
+    "husky": "^0.12.0",
+    "rollup": "^0.39.2",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-bundle-size": "^1.0.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-uglify": "^1.0.1"
+  }
+}
