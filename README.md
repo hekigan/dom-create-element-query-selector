@@ -3,15 +3,66 @@
 ![Node](https://img.shields.io/node/v/dom-create-element-query-selector.svg?style=flat-square)
 [![NPM](https://img.shields.io/npm/v/dom-create-element-query-selector.svg?style=flat-square)](https://www.npmjs.com/package/dom-create-element-query-selector)
 [![Travis](https://img.shields.io/travis/hekigan/dom-create-element-query-selector/master.svg?style=flat-square)](https://travis-ci.org/hekigan/dom-create-element-query-selector)
-[![David](https://img.shields.io/david/hekigan/dom-create-element-query-selector.svg?style=flat-square)](https://david-dm.org/hekigan/dom-create-element-query-selector)
-[![Coverage Status](https://img.shields.io/coveralls/hekigan/dom-create-element-query-selector.svg?style=flat-square)](https://coveralls.io/github/hekigan/dom-create-element-query-selector)
+[![Coverage Status](https://coveralls.io/repos/github/hekigan/dom-create-element-query-selector/badge.svg?branch=master)](https://coveralls.io/github/hekigan/dom-create-element-query-selector?branch=master)
 
 > A utility function to create DOM elements with CSS selector-like syntax
 
+### Description
+
+As I had to use vanilla Javascript for a project, I got upset with how verbose it was to create DOM elements.
+
+I use the same css-selector-like syntax as `document.querySelector()` to create the new Nodes in a more compact, simple and readable way.
+
+There are no dependencies and multiple versions are available (es5, es6, UMD). See the BUILD section below for more information. 
+
 ### Usage
 
+#### Basic
+
+The simplest example add an empty `div` tag to the document's `body`.
 ```js
 import createElement from 'dom-create-element-query-selector';
+
+const body = document.querySelector('body');
+body.appendChild(createElement());
+```
+
+#### Other usages
+```js
+import createElement from 'dom-create-element-query-selector';
+
+let elt = null;
+
+// some examples
+
+elt = createElement(); // <div></div>
+
+// create a span node with an id
+elt = createElement('span#my-id'); // <span id="my-id"></span>
+
+// add class
+elt = createElement('span.my-class'); // <span class="my-class"></span>
+
+// add id and class
+elt = createElement('span#my-id.my-class'); // <span id="my-id" class="my-class"></span>
+
+// add class and attributes
+elt = createElement('a[href=#].link'); // <a class="link" href="#"></a>
+
+// add content to the new element (text & other nodes)
+elt = createElement('div',
+    'paragraphs',
+    createElement('p', 'paragraph 1'),
+    createElement('p', 'paragraph 2')
+);
+// <div>
+//  paragraphs
+//  <p>paragraph 1</p>
+//  <p>paragraph 2</p>
+// </div>
+
+// add the generated element to the DOM
+document.querySelector('body').appendChild(elt);
 
 ```
 
@@ -25,30 +76,6 @@ or npm
 
 	npm install dom-create-element-query-selector (--save-dev)
 
-
-### configuration
-
-You can pass in extra options as a configuration object (➕ required, ➖ optional, ✏️ default).
-
-```js
-import createElement from 'dom-create-element-query-selector';
-
-```
-
-➖ **property** ( type ) ` ✏️ default `
-<br/> 📝 description
-<br/> ❗️ warning
-<br/> ℹ️ info
-<br/> 💡 example
-
-### methods
-
-#### #name
-
-```js
-createElement
-
-```
 
 ### Examples
 
