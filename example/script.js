@@ -1,1 +1,1 @@
-const domCreateElementQuerySelector = require(`../`);
+const createElement = require(`../`);
