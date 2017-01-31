@@ -1,6 +1,6 @@
 {
   "name": "dom-create-element-query-selector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A utility function to create DOM elements with CSS selector-like syntax",
   "main": "cjs/index.js",
   "browser": "dist/domCreateElementQuerySelector.js",
@@ -33,7 +33,14 @@
     "build:cjs": "rimraf cjs && cross-env BABEL_ENV=cjs babel src --out-dir cjs",
     "build:umd": "rimraf dist && cross-env BABEL_ENV=es rollup -c & cross-env BABEL_ENV=es NODE_ENV=production rollup -c"
   },
-  "keywords": [],
+  "keywords": [
+    "dom",
+    "create element",
+    "createElement",
+    "html",
+    "querySelector",
+    "css"
+  ],
   "author": "Laurent Blanes (laurent.blanes@gmail.com)",
   "license": "MIT",
   "repository": "hekigan/dom-create-element-query-selector",
