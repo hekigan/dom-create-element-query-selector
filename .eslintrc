@@ -1,7 +1,7 @@
 {
-  "extends": "standard",
+  "extends": "standard-extended",
   "rules": {
-	  "indent": ["error", 4],
-	  "semi": ["error", "always"]
-  }
+    // allow paren-less arrow functions
+    "arrow-parens": 0
+  },
 }
