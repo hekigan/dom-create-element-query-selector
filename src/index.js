@@ -40,7 +40,8 @@ export default function createElement (querySelector = 'div', ...content) {
     }
 
     if (classes) {
-        elt.classList.value = classes.join(' ').replace(/\./g, '');
+        const attrClasses = classes.join(' ').replace(/\./g, '');
+        elt.setAttribute('class', attrClasses);
     }
 
     if (attributes) {
