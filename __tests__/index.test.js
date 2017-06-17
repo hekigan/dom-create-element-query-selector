@@ -40,4 +40,10 @@ describe('list all possibilities', () => {
         var result = '<div>paragraphs<p>paragraph 1</p><p>paragraph 2</p></div>';
         expect(elt.outerHTML).toBe(result);
     });
+
+    it('should return <h1></h1>', () => {
+        var elt = createElement('h1');
+        var result = '<h1></h1>';
+        expect(elt.outerHTML).toBe(result);
+    });
 });

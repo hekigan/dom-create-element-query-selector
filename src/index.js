@@ -23,7 +23,7 @@
  *    // </div>
  */
 export default function createElement (querySelector = 'div', ...content) {
-    let nodeType = querySelector.match(/^[a-z]+/i);
+    let nodeType = querySelector.match(/^[a-z0-9]+/i);
     let id = querySelector.match(/#([a-z]+[a-z0-9-]*)/gi);
     let classes = querySelector.match(/\.([a-z]+[a-z0-9-]*)/gi);
     let attributes = querySelector.match(/\[([a-z][a-z-]+)(=['|"]?([^\]]*)['|"]?)?\]/gi);
